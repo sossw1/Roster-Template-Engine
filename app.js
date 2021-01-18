@@ -10,10 +10,6 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
-
-// Write code to use inquirer to gather information about the development team members,
-// and to create objects for each team member (using the correct classes as blueprints!)
-
 const questions = [
     {
         type: 'input',
@@ -36,17 +32,17 @@ const specific = {
     'manager': {
         type: 'input',
         message: 'Office Number:',
-        name: 'officeNumber'
+        name: 'special'
     },
     'engineer': {
         type: 'input',
         message: 'GitHub Username:',
-        name: 'github'
+        name: 'special'
     },
     'intern': {
         type: 'input',
         message: 'School',
-        name: 'school'
+        name: 'special'
     }
 }
 
@@ -67,12 +63,39 @@ function promptQuestion (question) {
     return inquirer.prompt(question);
 }
 
-async function init () {
-    let res = await promptQuestion(qType);
-    
+async function getEmployees () {
+    const managers = [];
+    const engineers = [];
+    const interns = [];
+
+    let done = false;
+    while(!done) {
+        let res = await promptQuestion(qType);
+        if(typeClasses[res.type] !== undefined) {
+            let res2 = await promptQuestion(questions.concat(specific[res.type]));
+            let employee = new typeClasses[res.type](res2.name, res2.id, res2.email, res2.special);
+            switch(res.type) {
+                case 'manager':
+                    managers.push(employee);
+                    break;
+                case 'engineer':
+                    engineers.push(employee);
+                    break;
+                case 'intern':
+                    interns.push(employee);
+                    break;
+            }
+        } else {
+            done = true;
+        }
+    }
+    return managers.concat(engineers).concat(interns);
 }
 
-init();
+
+
+// Write code to use inquirer to gather information about the development team members,
+// and to create objects for each team member (using the correct classes as blueprints!)
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
