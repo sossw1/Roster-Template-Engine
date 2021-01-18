@@ -50,6 +50,12 @@ const specific = {
     }
 }
 
+const typeClasses = {
+    'manager': Manager,
+    'engineer': Engineer,
+    'intern': Intern
+}
+
 function promptQuestion (question) {
     inquirer.prompt(question).then( () => response);
 }
