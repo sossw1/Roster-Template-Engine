@@ -54,6 +54,16 @@ function promptQuestion (question) {
     inquirer.prompt(question).then( () => response);
 }
 
+function askType () {
+    let res = promptQuestion({
+        type: 'rawlist',
+        message: 'New employee type:',
+        name: 'type',
+        choices: ['manager','engineer','intern','none']
+    });
+    return res.type;
+}
+
 async function init () {
     
 }
