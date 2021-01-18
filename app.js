@@ -25,7 +25,7 @@ const specific = {
         message: 'GitHub Username:',
         name: 'github'
     },
-    'student': {
+    'intern': {
         type: 'input',
         message: 'School',
         name: 'school'
