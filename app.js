@@ -50,6 +50,13 @@ const specific = {
     }
 }
 
+const qType = {
+    type: 'rawlist',
+    message: 'New employee type:',
+    name: 'type',
+    choices: ['manager','engineer','intern','none']
+}
+
 const typeClasses = {
     'manager': Manager,
     'engineer': Engineer,
@@ -61,6 +68,7 @@ function promptQuestion (question) {
 }
 
 async function init () {
+    let res = await promptQuestion(qType);
     
 }
 
