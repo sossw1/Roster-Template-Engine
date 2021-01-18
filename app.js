@@ -92,6 +92,24 @@ async function getEmployees () {
     return managers.concat(engineers).concat(interns);
 }
 
+async function init () {
+    let employees = await getEmployees();
+    let html = await render(employees);
+    if(!fs.existsSync(OUTPUT_DIR)){
+        fs.mkdirSync(OUTPUT_DIR);
+        fs.writeFile(outputPath, html, () => {
+            console.log('Created directory "output" and wrote to file "team.html"');
+        });
+    } else {
+        fs.writeFile(outputPath, html, () => {
+            console.log('Wrote to file "team.html"');
+        });
+    }
+    
+}
+
+init();
+
 
 
 // Write code to use inquirer to gather information about the development team members,
