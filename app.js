@@ -41,7 +41,7 @@ const specific = {
     },
     'intern': {
         type: 'input',
-        message: 'School',
+        message: 'School:',
         name: 'special'
     }
 }
