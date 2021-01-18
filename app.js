@@ -73,6 +73,7 @@ async function getEmployees () {
         let res = await promptQuestion(qType);
         if(typeClasses[res.type] !== undefined) {
             let res2 = await promptQuestion(questions.concat(specific[res.type]));
+            console.log('-----');
             let employee = new typeClasses[res.type](res2.name, res2.id, res2.email, res2.special);
             switch(res.type) {
                 case 'manager':
