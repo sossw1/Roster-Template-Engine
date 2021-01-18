@@ -13,53 +13,26 @@ const render = require("./lib/htmlRenderer");
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
-const managerQuestions = [
-    {
-        type: 'input',
-        message: 'Name:',
-        name: 'name'
-    },
-    {
-        type: 'input',
-        message: "ID:",
-        name: 'id'
-    },
-    {
-        type: 'input',
-        message: 'Email:',
-        name: 'email'
-    },
-    {
+
+const specific = {
+    'manager': {
         type: 'input',
         message: 'Office Number:',
         name: 'officeNumber'
-    }
-]
-
-const engineerQuestions = [
-    {
-        type: 'input',
-        message: 'Name:',
-        name: 'name'
     },
-    {
-        type: 'input',
-        message: "ID:",
-        name: 'id'
-    },
-    {
-        type: 'input',
-        message: 'Email:',
-        name: 'email'
-    },
-    {
+    'engineer': {
         type: 'input',
         message: 'GitHub Username:',
         name: 'github'
+    },
+    'student': {
+        type: 'input',
+        message: 'School',
+        name: 'school'
     }
-]
+}
 
-const internQuestions = [
+const questions = [
     {
         type: 'input',
         message: 'Name:',
@@ -74,11 +47,6 @@ const internQuestions = [
         type: 'input',
         message: 'Email:',
         name: 'email'
-    },
-    {
-        type: 'input',
-        message: 'School:',
-        name: 'school'
     }
 ]
 
