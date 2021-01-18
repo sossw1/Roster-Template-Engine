@@ -50,7 +50,9 @@ const questions = [
     }
 ]
 
-
+function promptQuestion (question) {
+    inquirer.prompt(question).then( () => response);
+}
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
